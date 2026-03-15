@@ -3,6 +3,7 @@ import { Home, ClipboardList, Users, CreditCard, Settings, LogOut, Search, Bell,
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import BrandLogo from "@/components/BrandLogo";
+import PostTaskDialog from "@/components/PostTaskDialog";
 import { useAuth } from "@/contexts/AuthContext";
 import { useState } from "react";
 
