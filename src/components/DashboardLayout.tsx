@@ -3,6 +3,7 @@ import { Home, ClipboardList, Users, CreditCard, Settings, LogOut, Search, Bell,
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import BrandLogo from "@/components/BrandLogo";
+import PostTaskDialog from "@/components/PostTaskDialog";
 import { useAuth } from "@/contexts/AuthContext";
 import { useState } from "react";
 
@@ -18,6 +19,7 @@ const DashboardLayout = () => {
   const { signOut } = useAuth();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [postTaskOpen, setPostTaskOpen] = useState(false);
 
   const handleLogout = async () => {
     await signOut();
@@ -84,11 +86,9 @@ const DashboardLayout = () => {
               <Bell size={20} />
               <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary" />
             </Button>
-            <Link to="/dashboard/post-task">
-              <Button className="gradient-brand text-primary-foreground hover:opacity-90 gap-2">
-                <Plus size={16} /> Post Task
-              </Button>
-            </Link>
+            <Button onClick={() => setPostTaskOpen(true)} className="gradient-brand text-primary-foreground hover:opacity-90 gap-2">
+              <Plus size={16} /> Post Task
+            </Button>
           </div>
         </header>
 
@@ -96,6 +96,8 @@ const DashboardLayout = () => {
           <Outlet />
         </div>
       </main>
+
+      <PostTaskDialog open={postTaskOpen} onOpenChange={setPostTaskOpen} />
     </div>
   );
 };
