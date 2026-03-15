@@ -6,18 +6,18 @@ import { useQuery } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
 
 const categoryImages: Record<string, string> = {
-  Moving: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=300&h=200&fit=crop",
-  Gardening: "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=300&h=200&fit=crop",
-  Assembly: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&h=200&fit=crop",
-  Cleaning: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=300&h=200&fit=crop",
-  Delivery: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=300&h=200&fit=crop",
-  Handyman: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=300&h=200&fit=crop",
-  Painting: "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=300&h=200&fit=crop",
-  Errands: "https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=300&h=200&fit=crop",
-  Other: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300&h=200&fit=crop",
+  Moving: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop&auto=format",
+  Gardening: "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=400&h=300&fit=crop&auto=format",
+  Assembly: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop&auto=format",
+  Cleaning: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop&auto=format",
+  Delivery: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=400&h=300&fit=crop&auto=format",
+  Handyman: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&h=300&fit=crop&auto=format",
+  Painting: "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=400&h=300&fit=crop&auto=format",
+  Errands: "https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=400&h=300&fit=crop&auto=format",
+  Other: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&auto=format",
 };
 
-const defaultImage = "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300&h=200&fit=crop";
+const defaultImage = "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&auto=format";
 
 const fetchTasks = async () => {
   const { data, error } = await supabase
@@ -64,6 +64,9 @@ const FeedPage = () => {
                 src={categoryImages[task.category] || defaultImage}
                 alt={task.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                onError={(e) => { (e.target as HTMLImageElement).src = defaultImage; }}
               />
               <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground border-0">{task.category}</Badge>
             </div>
