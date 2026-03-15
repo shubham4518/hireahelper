@@ -64,6 +64,9 @@ const FeedPage = () => {
                 src={categoryImages[task.category] || defaultImage}
                 alt={task.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                onError={(e) => { (e.target as HTMLImageElement).src = defaultImage; }}
               />
               <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground border-0">{task.category}</Badge>
             </div>
