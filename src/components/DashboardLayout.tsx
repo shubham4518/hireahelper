@@ -19,6 +19,7 @@ const DashboardLayout = () => {
   const { signOut } = useAuth();
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [postTaskOpen, setPostTaskOpen] = useState(false);
 
   const handleLogout = async () => {
     await signOut();
