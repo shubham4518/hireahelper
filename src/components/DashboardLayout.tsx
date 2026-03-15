@@ -96,6 +96,8 @@ const DashboardLayout = () => {
           <Outlet />
         </div>
       </main>
+
+      <PostTaskDialog open={postTaskOpen} onOpenChange={setPostTaskOpen} />
     </div>
   );
 };
