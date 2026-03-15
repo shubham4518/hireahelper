@@ -86,11 +86,9 @@ const DashboardLayout = () => {
               <Bell size={20} />
               <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary" />
             </Button>
-            <Link to="/dashboard/post-task">
-              <Button className="gradient-brand text-primary-foreground hover:opacity-90 gap-2">
-                <Plus size={16} /> Post Task
-              </Button>
-            </Link>
+            <Button onClick={() => setPostTaskOpen(true)} className="gradient-brand text-primary-foreground hover:opacity-90 gap-2">
+              <Plus size={16} /> Post Task
+            </Button>
           </div>
         </header>
 
